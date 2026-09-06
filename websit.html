@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>School Registration</title>
+
+
+<style>
+
+    /* =========================
+       RESET
+    ========================= */
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================
+       BODY
+    ========================= */
+
+    body {
+
+        font-family:
+            Arial,
+            Helvetica,
+            sans-serif;
+
+        min-height: 100vh;
+
+        background:
+            linear-gradient(
+                135deg,
+                #eef4ff,
+                #f8fafc
+            );
+
+        color: #1e293b;
+
+        padding: 40px 20px;
+    }
+
+
+    /* =========================
+       MAIN CARD
+    ========================= */
+
+    .container {
+
+        width: 100%;
+
+        max-width: 1050px;
+
+        margin: auto;
+
+        display: grid;
+
+        grid-template-columns:
+            35% 65%;
+
+        background: #ffffff;
+
+        border-radius: 18px;
+
+        overflow: hidden;
+
+        box-shadow:
+            0 15px 45px
+            rgba(15, 23, 42, 0.10);
+    }
+
+
+    /* =========================
+       LEFT PANEL
+    ========================= */
+
+    .left-panel {
+
+        background:
+            linear-gradient(
+                160deg,
+                #1e40af,
+                #2563eb
+            );
+
+        color: white;
+
+        padding: 50px 40px;
+
+        display: flex;
+
+        flex-direction: column;
+
+        justify-content: center;
+    }
+
+
+    .school-icon {
+
+        width: 62px;
+
+        height: 62px;
+
+        background:
+            rgba(255,255,255,0.14);
+
+        border-radius: 14px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 30px;
+
+        margin-bottom: 25px;
+    }
+
+
+    .left-panel h1 {
+
+        font-size: 32px;
+
+        line-height: 1.2;
+
+        margin-bottom: 15px;
+    }
+
+
+    .left-panel > p {
+
+        font-size: 14px;
+
+        line-height: 1.7;
+
+        color:
+            rgba(255,255,255,0.82);
+
+        margin-bottom: 35px;
+    }
+
+
+    /* Features */
+
+    .features {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 16px;
+    }
+
+
+    .feature {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 12px;
+
+        font-size: 14px;
+    }
+
+
+    .feature-icon {
+
+        width: 26px;
+
+        height: 26px;
+
+        border-radius: 50%;
+
+        background:
+            rgba(255,255,255,0.15);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 12px;
+    }
+
+
+    /* =========================
+       RIGHT PANEL
+    ========================= */
+
+    .form-panel {
+
+        padding: 45px;
+    }
+
+
+    .form-header {
+
+        margin-bottom: 30px;
+    }
+
+
+    .form-header span {
+
+        display: inline-block;
+
+        font-size: 11px;
+
+        font-weight: 700;
+
+        letter-spacing: 1px;
+
+        color: #2563eb;
+
+        background: #eff6ff;
+
+        padding: 6px 10px;
+
+        border-radius: 6px;
+
+        margin-bottom: 10px;
+    }
+
+
+    .form-header h2 {
+
+        font-size: 28px;
+
+        color: #0f172a;
+
+        margin-bottom: 7px;
+    }
+
+
+    .form-header p {
+
+        font-size: 13px;
+
+        color: #64748b;
+    }
+
+
+    /* =========================
+       FORM SECTION
+    ========================= */
+
+    .form-section {
+
+        margin-bottom: 28px;
+    }
+
+
+    .section-heading {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 10px;
+
+        padding-bottom: 10px;
+
+        margin-bottom: 18px;
+
+        border-bottom:
+            1px solid #e2e8f0;
+    }
+
+
+    .section-number {
+
+        width: 26px;
+
+        height: 26px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        background: #2563eb;
+
+        color: white;
+
+        border-radius: 6px;
+
+        font-size: 11px;
+
+        font-weight: bold;
+    }
+
+
+    .section-heading h3 {
+
+        font-size: 15px;
+
+        color: #334155;
+    }
+
+
+    /* =========================
+       GRID
+    ========================= */
+
+    .form-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            1fr 1fr;
+
+        gap: 17px;
+    }
+
+
+    .input-group {
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 6px;
+    }
+
+
+    .input-group.full {
+
+        grid-column:
+            span 2;
+    }
+
+
+    /* =========================
+       LABELS
+    ========================= */
+
+    label {
+
+        font-size: 12px;
+
+        font-weight: 600;
+
+        color: #475569;
+    }
+
+
+    /* =========================
+       INPUTS
+    ========================= */
+
+    input,
+    select,
+    textarea {
+
+        width: 100%;
+
+        border: 1px solid #dbe2ea;
+
+        border-radius: 8px;
+
+        padding: 11px 12px;
+
+        font-family: inherit;
+
+        font-size: 13px;
+
+        color: #1e293b;
+
+        background: #ffffff;
+
+        outline: none;
+
+        transition: 0.2s;
+    }
+
+
+    input::placeholder,
+    textarea::placeholder {
+
+        color: #a1aab7;
+    }
+
+
+    textarea {
+
+        resize: vertical;
+
+        min-height: 80px;
+    }
+
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+
+        border-color: #2563eb;
+
+        box-shadow:
+            0 0 0 3px
+            rgba(37,99,235,0.08);
+    }
+
+
+    /* =========================
+       TERMS
+    ========================= */
+
+    .terms {
+
+        display: flex;
+
+        align-items: flex-start;
+
+        gap: 8px;
+
+        margin: 5px 0 20px;
+
+        font-size: 11px;
+
+        color: #64748b;
+
+        line-height: 1.5;
+    }
+
+
+    .terms input {
+
+        width: auto;
+
+        margin-top: 2px;
+
+        accent-color: #2563eb;
+    }
+
+
+    /* =========================
+       REGISTER BUTTON
+    ========================= */
+
+    .register-button {
+
+        width: 100%;
+
+        border: none;
+
+        border-radius: 8px;
+
+        padding: 13px;
+
+        background: #2563eb;
+
+        color: white;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+
+        transition: 0.2s;
+    }
+
+
+    .register-button:hover {
+
+        background: #1d4ed8;
+
+        transform: translateY(-1px);
+
+        box-shadow:
+            0 7px 18px
+            rgba(37,99,235,0.20);
+    }
+
+
+    .register-button:active {
+
+        transform:
+            translateY(0);
+    }
+
+
+    /* =========================
+       POPUP BACKGROUND
+    ========================= */
+
+    .popup-overlay {
+
+        position: fixed;
+
+        inset: 0;
+
+        background:
+            rgba(15,23,42,0.55);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 20px;
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        transition: 0.25s;
+
+        z-index: 1000;
+    }
+
+
+    .popup-overlay.show {
+
+        opacity: 1;
+
+        visibility: visible;
+    }
+
+
+    /* =========================
+       POPUP
+    ========================= */
+
+    .popup {
+
+        width: 100%;
+
+        max-width: 390px;
+
+        background: white;
+
+        border-radius: 16px;
+
+        padding: 35px;
+
+        text-align: center;
+
+        position: relative;
+
+        transform:
+            translateY(15px)
+            scale(0.95);
+
+        transition: 0.3s;
+
+        box-shadow:
+            0 25px 60px
+            rgba(0,0,0,0.20);
+    }
+
+
+    .popup-overlay.show .popup {
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+
+
+    /* =========================
+       SUCCESS ICON
+    ========================= */
+
+    .success-icon {
+
+        width: 65px;
+
+        height: 65px;
+
+        margin:
+            0 auto 18px;
+
+        border-radius: 50%;
+
+        background: #ecfdf5;
+
+        color: #16a34a;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 32px;
+
+        font-weight: bold;
+    }
+
+
+    .popup h2 {
+
+        font-size: 22px;
+
+        color: #0f172a;
+
+        margin-bottom: 10px;
+    }
+
+
+    .popup p {
+
+        font-size: 13px;
+
+        line-height: 1.6;
+
+        color: #64748b;
+    }
+
+
+    .popup strong {
+
+        color: #2563eb;
+    }
+
+
+    /* =========================
+       CLOSE BUTTON
+    ========================= */
+
+    .close-button {
+
+        position: absolute;
+
+        top: 12px;
+
+        right: 12px;
+
+        width: 30px;
+
+        height: 30px;
+
+        border: none;
+
+        border-radius: 50%;
+
+        background: #f1f5f9;
+
+        color: #64748b;
+
+        font-size: 20px;
+
+        cursor: pointer;
+    }
+
+
+    .close-button:hover {
+
+        background: #e2e8f0;
+    }
+
+
+    /* =========================
+       POPUP CONTINUE
+    ========================= */
+
+    .continue-button {
+
+        width: 100%;
+
+        border: none;
+
+        border-radius: 8px;
+
+        padding: 12px;
+
+        margin-top: 20px;
+
+        background: #2563eb;
+
+        color: white;
+
+        font-size: 13px;
+
+        font-weight: 600;
+
+        cursor: pointer;
+    }
+
+
+    .continue-button:hover {
+
+        background: #1d4ed8;
+    }
+
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 850px) {
+
+        .container {
+
+            grid-template-columns: 1fr;
+        }
+
+
+        .left-panel {
+
+            padding: 35px;
+        }
+
+
+        .form-panel {
+
+            padding: 35px;
+        }
+    }
+
+
+    @media (max-width: 600px) {
+
+        body {
+
+            padding: 0;
+        }
+
+
+        .container {
+
+            border-radius: 0;
+
+            min-height: 100vh;
+        }
+
+
+        .left-panel {
+
+            padding: 30px 25px;
+        }
+
+
+        .form-panel {
+
+            padding: 30px 20px;
+        }
+
+
+        .form-grid {
+
+            grid-template-columns: 1fr;
+        }
+
+
+        .input-group.full {
+
+            grid-column:
+                span 1;
+        }
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- =========================
+     MAIN CONTAINER
+========================= -->
+
+<div class="container">
+
+
+    <!-- LEFT -->
+
+    <div class="left-panel">
+
+        <div class="school-icon">
+            🎓
+        </div>
+
+
+        <h1>
+            Bright Future Academy
+        </h1>
+
+
+        <p>
+            Begin your child's educational journey
+            with a school committed to excellence,
+            growth, and student success.
+        </p>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+                <span>
+                    Quality Education
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+                <span>
+                    Qualified Teachers
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+                <span>
+                    Safe Learning Environment
+                </span>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">
+                    ✓
+                </div>
+
+                <span>
+                    Student Development
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT -->
+
+    <div class="form-panel">
+
+
+        <div class="form-header">
+
+            <span>
+                ADMISSIONS
+            </span>
+
+            <h2>
+                Student Registration
+            </h2>
+
+            <p>
+                Please provide the required information
+                to complete registration.
+            </p>
+
+        </div>
+
+
+        <form id="registrationForm">
+
+
+            <!-- =====================
+                 STUDENT INFORMATION
+            ====================== -->
+
+            <div class="form-section">
+
+                <div class="section-heading">
+
+                    <div class="section-number">
+                        01
+                    </div>
+
+                    <h3>
+                        Student Information
+                    </h3>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="input-group">
+
+                        <label for="firstName">
+                            First Name
+                        </label>
+
+                        <input
+                            id="firstName"
+                            type="text"
+                            placeholder="First name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label for="lastName">
+                            Last Name
+                        </label>
+
+                        <input
+                            id="lastName"
+                            type="text"
+                            placeholder="Last name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Date of Birth
+                        </label>
+
+                        <input
+                            type="date"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Gender
+                        </label>
+
+                        <select required>
+
+                            <option value="">
+                                Select gender
+                            </option>
+
+                            <option>
+                                Male
+                            </option>
+
+                            <option>
+                                Female
+                            </option>
+
+                            <option>
+                                Other
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Applying For
+                        </label>
+
+                        <select required>
+
+                            <option value="">
+                                Select grade
+                            </option>
+
+                            <option>
+                                Grade 1
+                            </option>
+
+                            <option>
+                                Grade 2
+                            </option>
+
+                            <option>
+                                Grade 3
+                            </option>
+
+                            <option>
+                                Grade 4
+                            </option>
+
+                            <option>
+                                Grade 5
+                            </option>
+
+                            <option>
+                                Grade 6
+                            </option>
+
+                            <option>
+                                Grade 7
+                            </option>
+
+                            <option>
+                                Grade 8
+                            </option>
+
+                            <option>
+                                Grade 9
+                            </option>
+
+                            <option>
+                                Grade 10
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Previous School
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Previous school"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================
+                 PARENT INFORMATION
+            ====================== -->
+
+            <div class="form-section">
+
+                <div class="section-heading">
+
+                    <div class="section-number">
+                        02
+                    </div>
+
+                    <h3>
+                        Parent / Guardian Information
+                    </h3>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Parent / Guardian Name
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Full name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Relationship
+                        </label>
+
+                        <select required>
+
+                            <option value="">
+                                Select
+                            </option>
+
+                            <option>
+                                Father
+                            </option>
+
+                            <option>
+                                Mother
+                            </option>
+
+                            <option>
+                                Guardian
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input
+                            type="email"
+                            placeholder="example@email.com"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            placeholder="+92 300 1234567"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group full">
+
+                        <label>
+                            Home Address
+                        </label>
+
+                        <textarea
+                            placeholder="Enter complete address"
+                            required
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =====================
+                 ACCOUNT
+            ====================== -->
+
+            <div class="form-section">
+
+                <div class="section-heading">
+
+                    <div class="section-number">
+                        03
+                    </div>
+
+                    <h3>
+                        Account Information
+                    </h3>
+
+                </div>
+
+
+                <div class="form-grid">
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Username
+                        </label>
+
+                        <input
+                            type="text"
+                            placeholder="Create username"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            placeholder="Minimum 6 characters"
+                            minlength="6"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TERMS -->
+
+            <div class="terms">
+
+                <input
+                    id="terms"
+                    type="checkbox"
+                    required
+                >
+
+                <label for="terms">
+
+                    I confirm that the information
+                    provided is accurate and I agree
+                    to the school's terms and conditions.
+
+                </label>
+
+            </div>
+
+
+            <!-- REGISTER -->
+
+            <button
+                type="submit"
+                class="register-button"
+            >
+
+                Register Student
+
+            </button>
+
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     SUCCESS POPUP
+========================= -->
+
+<div
+    class="popup-overlay"
+    id="popupOverlay"
+>
+
+
+    <div class="popup">
+
+
+        <button
+            class="close-button"
+            id="closeButton"
+        >
+            ×
+        </button>
+
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+
+        <h2>
+            Registration Successful
+        </h2>
+
+
+        <p>
+
+            <strong id="studentName">
+            </strong>
+
+            has been successfully registered.
+
+        </p>
+
+
+        <p style="margin-top: 8px;">
+
+            Your admission request has been
+            received by the school.
+
+        </p>
+
+
+        <button
+            class="continue-button"
+            id="continueButton"
+        >
+            Continue
+        </button>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+   
+
+
+
+    const form =
+        document.getElementById(
+            "registrationForm"
+        );
+
+
+    const popup =
+        document.getElementById(
+            "popupOverlay"
+        );
+
+
+    const closeButton =
+        document.getElementById(
+            "closeButton"
+        );
+
+
+    const continueButton =
+        document.getElementById(
+            "continueButton"
+        );
+
+
+    const studentName =
+        document.getElementById(
+            "studentName"
+        );
+
+
+    /* =========================
+       FORM SUBMIT
+    ========================= */
+
+    form.addEventListener(
+        "submit",
+        function(event) {
+
+            /*
+                Prevent page reload
+            */
+
+            event.preventDefault();
+
+
+            /*
+                Get student name
+            */
+
+            const firstName =
+                document
+                .getElementById(
+                    "firstName"
+                )
+                .value
+                .trim();
+
+
+            const lastName =
+                document
+                .getElementById(
+                    "lastName"
+                )
+                .value
+                .trim();
+
+
+            /*
+                Display name
+            */
+
+            studentName.textContent =
+                firstName + " " + lastName;
+
+
+            /*
+                Show popup
+            */
+
+            popup.classList.add(
+                "show"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       CLOSE POPUP
+    ========================= */
+
+    closeButton.addEventListener(
+        "click",
+        function() {
+
+            popup.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+
+    /* =========================
+       CONTINUE
+    ========================= */
+
+    continueButton.addEventListener(
+        "click",
+        function() {
+
+            popup.classList.remove(
+                "show"
+            );
+
+            form.reset();
+
+        }
+    );
+
+
+    /* =========================
+       CLICK OUTSIDE
+    ========================= */
+
+    popup.addEventListener(
+        "click",
+        function(event) {
+
+            if (
+                event.target === popup
+            ) {
+
+                popup.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================
+       ESCAPE KEY
+    ========================= */
+
+    document.addEventListener(
+        "keydown",
+        function(event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                popup.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+</script>
+```
+
+</body>
+
+</html>
+

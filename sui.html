@@ -1,0 +1,96 @@
+```html
+<script>
+    const form = document.getElementById("registrationForm");
+    const popup = document.getElementById("successPopup");
+    const popupTitle = document.querySelector("#successPopup h2");
+    const popupMessage = document.querySelector("#successPopup p");
+    const closePopup = document.getElementById("closePopup");
+    const continueBtn = document.getElementById("continueBtn");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const firstName = document.getElementById("firstName").value.trim();
+        const lastName = document.getElementById("lastName").value.trim();
+        const dob = document.getElementById("dob").value;
+
+        if (!dob) {
+            alert("Please enter the student's date of birth.");
+            return;
+        }
+
+        // Calculate student's age
+        const birthDate = new Date(dob);
+        const today = new Date();
+
+        let age = today.getFullYear() - birthDate.getFullYear();
+
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+
+        if (
+            monthDifference < 0 ||
+            (monthDifference === 0 &&
+                today.getDate() < birthDate.getDate())
+        ) {
+            age--;
+        }
+
+        // Age restriction
+        if (age <= 12) {
+            popupTitle.textContent = "Admission Not Granted";
+            popupMessage.innerHTML =
+                `Sorry, <strong>${firstName} ${lastName}</strong> is ${age} years old.<br>
+                Students aged 12 or below are not eligible for admission.`;
+
+            popup.classList.add("show");
+
+            // Change popup icon
+            document.querySelector(".success-icon").textContent = "✕";
+            document.querySelector(".success-icon").style.background = "#fee2e2";
+            document.querySelector(".success-icon").style.color = "#dc2626";
+
+            continueBtn.textContent = "Close";
+            return;
+        }
+
+        // Admission granted
+        popupTitle.textContent = "Registration Successful";
+        popupMessage.innerHTML =
+            `Welcome, <strong>${firstName} ${lastName}</strong>!<br>
+            Your admission request has been successfully submitted.`;
+
+        document.querySelector(".success-icon").textContent = "✓";
+        document.querySelector(".success-icon").style.background = "#dcfce7";
+        document.querySelector(".success-icon").style.color = "#16a34a";
+
+        continueBtn.textContent = "Continue";
+
+        popup.classList.add("show");
+    });
+
+    // Close popup
+    closePopup.addEventListener("click", function () {
+        popup.classList.remove("show");
+    });
+
+    // Continue / Close button
+    continueBtn.addEventListener("click", function () {
+        popup.classList.remove("show");
+        form.reset();
+    });
+
+    // Close when clicking outside popup
+    popup.addEventListener("click", function (e) {
+        if (e.target === popup) {
+            popup.classList.remove("show");
+        }
+    });
+
+    // Close with Escape key
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            popup.classList.remove("show");
+        }
+    });
+</script>
+```
